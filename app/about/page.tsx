@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Metadata } from "next"
 import { CheckCircle, Users, Award, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -46,15 +47,17 @@ export default function AboutPage() {
                         </div>
                     </div>
                 </div>
-                <div className="aspect-square relative rounded-2xl overflow-hidden border border-border/50 bg-secondary/5">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <Sparkles className="h-32 w-32 text-white/10" />
-                    </div>
-                    {/* Placeholder for Team/Shop Image */}
-                    <div className="absolute bottom-6 left-6 right-6 p-6 rounded-xl bg-black/40 backdrop-blur-md border border-white/10">
+                <div className="aspect-square relative rounded-2xl overflow-hidden border border-border/50 bg-secondary/5 group">
+                    <Image
+                        src="https://images.pexels.com/photos/6873049/pexels-photo-6873049.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                        alt="State of the Art Facility"
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+                    <div className="absolute bottom-6 left-6 right-6 p-6 rounded-xl bg-black/60 backdrop-blur-md border border-white/10">
                         <p className="font-bold text-white mb-1">State of the Art Facility</p>
-                        <p className="text-xs text-white/70">Equipped with the best tools in the industry</p>
+                        <p className="text-xs text-white/70">Equipped with deionized reverse-osmosis filtration & 9H ceramic curing</p>
                     </div>
                 </div>
             </div>

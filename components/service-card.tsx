@@ -1,6 +1,6 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Clock } from "lucide-react"
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Service } from "@/lib/services"
@@ -11,41 +11,50 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service }: ServiceCardProps) {
     return (
-        <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border/50 bg-card transition-all hover:border-primary/50 hover:shadow-[0_0_20px_-5px_var(--primary)]">
-            {/* Poster Gradient/Image Placeholder */}
-            <div className={cn("relative aspect-[3/4] w-full overflow-hidden bg-gradient-to-br p-6 flex flex-col justify-end", service.gradient)}>
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
+        <div className="group relative flex h-full flex-col overflow-hidden border border-border/40 bg-card/60 backdrop-blur-md rounded-xl transition-all duration-500 hover:border-primary/60 hover:shadow-[0_0_30px_-5px_var(--primary)] hover:-translate-y-1">
+            {/* Real Photography with Cinematic Overlay */}
+            <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950">
+                <Image
+                    src={service.image}
+                    alt={service.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover object-center group-hover:scale-110 transition-transform duration-700 brightness-90 group-hover:brightness-100"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
 
-                {/* Neon Frame Effect on Hover (Optional CSS trick, but we keep it simple first) */}
-
-                <div className="relative z-10 space-y-2">
-                    <Badge variant="outline" className="border-primary/50 text-primary bg-primary/10 backdrop-blur-md mb-2 w-fit">
+                <div className="absolute top-4 left-4 z-10">
+                    <Badge variant="outline" className="border-primary/50 text-primary bg-black/60 backdrop-blur-md uppercase tracking-wider text-[11px] font-bold">
                         {service.category}
                     </Badge>
-                    <h3 className="font-outfit text-2xl font-bold uppercase leading-tight text-foreground group-hover:text-glow transition-all">
+                </div>
+
+                <div className="absolute bottom-3 left-4 right-4 z-10">
+                    <h3 className="font-outfit text-2xl font-black uppercase tracking-tight text-white group-hover:text-primary transition-colors">
                         {service.name}
                     </h3>
-                    <p className="line-clamp-2 text-sm text-muted-foreground">
-                        {service.shortDescription}
-                    </p>
                 </div>
             </div>
 
             {/* Content Bottom / Actions */}
-            <div className="flex flex-1 flex-col justify-between space-y-4 p-6 pt-4 bg-card/50 backdrop-blur-sm">
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1.5">
-                        <Clock className="h-4 w-4 text-primary" />
+            <div className="flex flex-1 flex-col justify-between space-y-4 p-5 pt-3">
+                <p className="line-clamp-2 text-xs text-muted-foreground leading-relaxed">
+                    {service.shortDescription}
+                </p>
+
+                <div className="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t border-border/30">
+                    <div className="flex items-center gap-1.5 font-medium">
+                        <Clock className="h-3.5 w-3.5 text-primary" />
                         <span>{service.duration}</span>
                     </div>
-                    <p className="font-semibold text-foreground">From €{service.priceFrom}</p>
+                    <p className="font-bold text-foreground text-sm font-mono text-primary">From €{service.priceFrom}</p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
-                    <Button variant="outline" className="w-full border-primary/20 hover:bg-primary/10 hover:text-primary" asChild>
+                <div className="grid grid-cols-2 gap-2 pt-1">
+                    <Button variant="outline" size="sm" className="w-full border-border/50 text-xs hover:bg-white/5 hover:text-white" asChild>
                         <Link href={`/services/${service.slug}`}>Details</Link>
                     </Button>
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20" asChild>
+                    <Button size="sm" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-xs shadow-md shadow-primary/20" asChild>
                         <Link href={`/book?service=${service.slug}`}>Book</Link>
                     </Button>
                 </div>

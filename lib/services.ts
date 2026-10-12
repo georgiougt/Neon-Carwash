@@ -10,6 +10,7 @@ export interface Service {
     faqs: { question: string; answer: string }[]
     category: "Wash" | "Interior" | "Detailing" | "Protection"
     gradient: string
+    image: string
 }
 
 export const services: Service[] = [
@@ -30,6 +31,7 @@ export const services: Service[] = [
             { question: "Do you use brushes?", answer: "No, we use a 100% touchless or microfiber hand wash method to prevent swirls." },
         ],
         gradient: "from-pink-500/20 via-purple-500/20 to-blue-500/20",
+        image: "https://images.pexels.com/photos/6873043/pexels-photo-6873043.jpeg?auto=compress&cs=tinysrgb&w=1200",
     },
     {
         slug: "exterior-wax",
@@ -47,6 +49,7 @@ export const services: Service[] = [
             { question: "How long does the wax last?", answer: "Typically 1-3 months depending on weather conditions and maintenance." },
         ],
         gradient: "from-purple-500/20 via-blue-500/20 to-cyan-500/20",
+        image: "https://images.pexels.com/photos/3354648/pexels-photo-3354648.jpeg?auto=compress&cs=tinysrgb&w=1200",
     },
     {
         slug: "interior-deep-clean",
@@ -65,6 +68,7 @@ export const services: Service[] = [
             { question: "Will stains come out?", answer: "We treat all stains, but extraction results depend on the stain type and age." },
         ],
         gradient: "from-blue-500/20 via-cyan-500/20 to-teal-500/20",
+        image: "https://images.pexels.com/photos/4489749/pexels-photo-4489749.jpeg?auto=compress&cs=tinysrgb&w=1200",
     },
     {
         slug: "signature-wash",
@@ -80,6 +84,7 @@ export const services: Service[] = [
         ],
         faqs: [],
         gradient: "from-pink-600/20 via-rose-500/20 to-orange-500/20",
+        image: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=1200",
     },
     {
         slug: "engine-bay",
@@ -95,6 +100,7 @@ export const services: Service[] = [
             { question: "Is it safe?", answer: "Yes, we cover alternator and intake components and use low pressure." },
         ],
         gradient: "from-orange-500/20 via-red-500/20 to-pink-500/20",
+        image: "https://images.pexels.com/photos/190537/pexels-photo-190537.jpeg?auto=compress&cs=tinysrgb&w=1200",
     },
     {
         slug: "ceramic-spray-sealant",
@@ -108,6 +114,7 @@ export const services: Service[] = [
         addOns: [],
         faqs: [],
         gradient: "from-cyan-500/20 via-blue-600/20 to-indigo-500/20",
+        image: "https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg?auto=compress&cs=tinysrgb&w=1200",
     },
     {
         slug: "full-detailing",
@@ -123,6 +130,7 @@ export const services: Service[] = [
         ],
         faqs: [],
         gradient: "from-fuchsia-600/20 via-pink-600/20 to-purple-600/20",
+        image: "https://images.pexels.com/photos/6873024/pexels-photo-6873024.jpeg?auto=compress&cs=tinysrgb&w=1200",
     },
     {
         slug: "pet-hair-removal",
@@ -136,6 +144,7 @@ export const services: Service[] = [
         addOns: [],
         faqs: [],
         gradient: "from-teal-500/20 via-green-500/20 to-emerald-500/20",
+        image: "https://images.pexels.com/photos/4489749/pexels-photo-4489749.jpeg?auto=compress&cs=tinysrgb&w=1200",
     },
     {
         slug: "headlight-restoration",
@@ -149,5 +158,6 @@ export const services: Service[] = [
         addOns: [],
         faqs: [],
         gradient: "from-yellow-500/20 via-amber-500/20 to-orange-500/20",
+        image: "https://images.pexels.com/photos/3807386/pexels-photo-3807386.jpeg?auto=compress&cs=tinysrgb&w=1200",
     },
 ]

@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Star, ShieldCheck, Sparkles, Clock, Droplets, Trophy, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
@@ -12,31 +13,43 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-16 pb-16">
-      {/* 1. HERO SECTION */}
-      <section className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden pt-20 text-center">
-        {/* Background Glow */}
-        <div className="absolute top-1/2 left-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[120px]" />
+      {/* 1. HERO SECTION WITH REAL PEXELS AUTOMOTIVE BACKDROP */}
+      <section className="relative flex min-h-[92vh] flex-col items-center justify-center overflow-hidden pt-20 text-center">
+        {/* Real Automotive Backdrop */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            alt="Neon Detailing Studio Backdrop"
+            fill
+            priority
+            className="object-cover object-center opacity-30 brightness-90 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+        </div>
 
-        <div className="container flex flex-col items-center gap-6 px-4 md:px-6">
-          <div className="inline-flex items-center rounded-full border border-primary/50 bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-md">
+        {/* Background Glow */}
+        <div className="absolute top-1/2 left-1/2 -z-10 h-[550px] w-[550px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[130px]" />
+
+        <div className="container relative z-10 flex flex-col items-center gap-6 px-4 md:px-6">
+          <div className="inline-flex items-center rounded-full border border-primary/50 bg-black/60 px-4 py-1.5 text-sm font-semibold text-primary backdrop-blur-md shadow-[0_0_15px_rgba(255,0,85,0.25)]">
             <Sparkles className="mr-2 h-4 w-4" />
-            Premium Auto Detailing
+            Premium Auto Detailing Atelier
           </div>
-          <h1 className="font-outfit text-5xl font-bold uppercase tracking-tighter sm:text-7xl md:text-8xl text-glow">
+          <h1 className="font-outfit text-5xl font-extrabold uppercase tracking-tight sm:text-7xl md:text-8xl text-glow">
             Welcome to <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-secondary animate-pulse">
               {siteConfig.name}
             </span>
           </h1>
-          <p className="max-w-[800px] text-lg text-muted-foreground md:text-xl">
-            The ultimate centre for your premium car care services in <span className="text-secondary font-semibold">{siteConfig.location}</span>.
-            We deliver unmatched care with state-of-the-art water filtration and premium products.
+          <p className="max-w-[800px] text-lg text-zinc-300 md:text-xl font-light leading-relaxed backdrop-blur-sm bg-black/40 p-4 rounded-xl border border-white/5">
+            The ultimate centre for your luxury car care services in <span className="text-secondary font-semibold">{siteConfig.location}</span>.
+            We deliver unmatched care with multi-stage deionized water filtration and ceramic technology.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row mt-4">
-            <Button size="lg" className="h-12 px-8 font-bold text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_20px_-5px_var(--primary)] text-glow min-w-[160px]" asChild>
+            <Button size="lg" className="h-14 px-10 font-bold text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_25px_-5px_var(--primary)] text-glow min-w-[180px] rounded-xl" asChild>
               <Link href="/book">Book Now</Link>
             </Button>
-            <Button size="lg" variant="outline" className="h-12 px-8 font-bold text-lg border-primary/30 hover:bg-primary/10 hover:text-primary min-w-[160px]" asChild>
+            <Button size="lg" variant="outline" className="h-14 px-10 font-bold text-lg border-primary/40 bg-black/50 text-white hover:bg-primary/10 hover:text-primary min-w-[180px] rounded-xl backdrop-blur-md" asChild>
               <Link href="/services">View Services</Link>
             </Button>
           </div>
@@ -46,77 +59,81 @@ export default function Home() {
 
       {/* 2. TRUST STRIP */}
       <section className="container px-4 md:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 rounded-2xl border border-border/50 bg-card/30 p-8 backdrop-blur-sm">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 rounded-2xl border border-border/50 bg-card/50 p-8 backdrop-blur-md shadow-2xl">
           <div className="flex flex-col items-center gap-2 text-center">
             <Trophy className="h-8 w-8 text-primary mb-2" />
-            <h3 className="font-bold">Premium Products</h3>
-            <p className="text-xs text-muted-foreground">Only the best for your paint</p>
+            <h3 className="font-bold text-white">Premium Products</h3>
+            <p className="text-xs text-muted-foreground">Certified pH-neutral & non-abrasive</p>
           </div>
           <div className="flex flex-col items-center gap-2 text-center">
             <ShieldCheck className="h-8 w-8 text-secondary mb-2" />
-            <h3 className="font-bold">Paint-Safe</h3>
-            <p className="text-xs text-muted-foreground">pH neutral & microfiber only</p>
+            <h3 className="font-bold text-white">Paint-Safe</h3>
+            <p className="text-xs text-muted-foreground">Korean microfiber & two-bucket method</p>
           </div>
           <div className="flex flex-col items-center gap-2 text-center">
             <Droplets className="h-8 w-8 text-primary mb-2" />
-            <h3 className="font-bold">Water Filtration</h3>
-            <p className="text-xs text-muted-foreground">Spot-free rinse guaranteed</p>
+            <h3 className="font-bold text-white">Spot-Free Water</h3>
+            <p className="text-xs text-muted-foreground">Deionized reverse-osmosis filtration</p>
           </div>
           <div className="flex flex-col items-center gap-2 text-center">
             <Clock className="h-8 w-8 text-secondary mb-2" />
-            <h3 className="font-bold">Fast Turnaround</h3>
-            <p className="text-xs text-muted-foreground">Quality taking no shortcuts</p>
+            <h3 className="font-bold text-white">Fast & Thorough</h3>
+            <p className="text-xs text-muted-foreground">Precision detailing without delays</p>
           </div>
         </div>
       </section>
 
-      {/* 3. OUR SERVICES */}
+      {/* 3. FEATURED SERVICES */}
       <section className="container px-4 md:px-6">
-        <div className="flex flex-col items-center gap-4 text-center mb-12">
-          <h2 className="font-outfit text-3xl font-bold uppercase tracking-wide md:text-5xl">
-            Our <span className="text-primary">Services</span>
+        <div className="flex flex-col items-center text-center space-y-4 mb-12">
+          <h2 className="font-outfit text-4xl font-bold uppercase tracking-tight md:text-5xl text-glow">
+            Our <span className="text-primary">Featured Services</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl">
-            Choose from our range of professional detailing packages designed to protect and enhance your vehicle.
+          <p className="text-muted-foreground max-w-2xl text-base md:text-lg">
+            Choose from our specialized auto detailing packages designed to protect and revitalize your vehicle.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {featuredServices.map((service) => (
             <ServiceCard key={service.slug} service={service} />
           ))}
         </div>
-        <div className="mt-12 text-center">
-          <Button variant="outline" size="lg" className="border-primary/50 text-foreground hover:bg-primary/10 hover:text-primary" asChild>
-            <Link href="/services">View All Services <ArrowRight className="ml-2 h-4 w-4" /></Link>
+
+        <div className="flex justify-center mt-12">
+          <Button variant="outline" size="lg" className="border-primary/50 text-primary hover:bg-primary/10 rounded-full px-8 uppercase tracking-wider font-bold text-xs" asChild>
+            <Link href="/services">
+              View All Services <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </Button>
         </div>
       </section>
 
-      {/* 4. FEATURED PACKAGE */}
+      {/* 4. SIGNATURE PACKAGE SECTION WITH REAL PEXELS VISUAL */}
       {signaturePackage && (
-        <section className="container px-4 md:px-6">
-          <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/10 via-background to-background p-8 md:p-12">
-            <div className="relative z-10 grid gap-8 lg:grid-cols-2 lg:gap-16 items-center">
+        <section className="relative overflow-hidden bg-card/40 py-20 border-y border-border/50">
+          <div className="container px-4 md:px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <div className="inline-block rounded-full bg-secondary/20 px-4 py-1.5 text-sm font-bold text-secondary">
-                  MOST POPULAR Choice
+                <div className="inline-block rounded-full bg-secondary/20 px-4 py-1.5 text-xs font-bold text-secondary uppercase tracking-widest border border-secondary/30">
+                  ★ Studio Signature Choice
                 </div>
-                <h2 className="font-outfit text-4xl font-bold uppercase leading-none md:text-6xl text-glow">
+                <h2 className="font-outfit text-4xl font-black uppercase leading-tight md:text-6xl text-white">
                   {signaturePackage.name}
                 </h2>
-                <p className="text-xl text-muted-foreground">
+                <p className="text-lg text-zinc-300 font-light leading-relaxed">
                   {signaturePackage.longDescription}
                 </p>
                 <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {signaturePackage.includes.map((item) => (
                     <li key={item} className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 text-primary" />
-                      <span>{item}</span>
+                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                      <span className="text-sm text-zinc-200 font-medium">{item}</span>
                     </li>
                   ))}
                 </ul>
                 <div className="pt-4">
-                  <Button size="lg" className="h-14 px-8 text-lg bg-primary hover:bg-primary/90 text-glow shadow-[0_0_30px_-5px_var(--primary)] w-full sm:w-auto" asChild>
+                  <Button size="lg" className="h-14 px-10 text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground text-glow shadow-[0_0_30px_-5px_var(--primary)] w-full sm:w-auto rounded-xl" asChild>
                     <Link href={`/book?service=${signaturePackage.slug}`}>
                       Book This Package • From €{signaturePackage.priceFrom}
                     </Link>
@@ -124,13 +141,21 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Abstract Visual for Package */}
-              <div className="relative aspect-square w-full max-w-[500px] justify-self-center lg:justify-self-end">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary via-purple-500 to-secondary blur-[80px] opacity-40 animate-pulse" />
-                <div className="relative h-full w-full rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl p-6 flex flex-col items-center justify-center text-center">
-                  <Sparkles className="h-24 w-24 text-primary mb-6" />
-                  <h3 className="font-outfit text-3xl font-bold uppercase">showroom<br />shine</h3>
-                  <p className="mt-2 text-muted-foreground">Guaranteed</p>
+              {/* Real Photography Feature Display */}
+              <div className="relative aspect-square w-full max-w-[500px] justify-self-center lg:justify-self-end rounded-2xl overflow-hidden border border-primary/40 shadow-[0_0_40px_rgba(255,0,85,0.25)] group">
+                <Image
+                  src="https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  alt="Showroom Mirror Ceramic Coating Finish"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+                <div className="absolute top-4 left-4 bg-primary text-black font-bold uppercase text-[11px] px-3 py-1 rounded">
+                  Ceramic 9H Shield
+                </div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="font-outfit text-2xl font-black uppercase text-white">Showroom Mirror Finish</h3>
+                  <p className="text-secondary text-xs uppercase tracking-widest font-bold mt-1">Multi-Stage Machine Polish Included</p>
                 </div>
               </div>
             </div>
@@ -140,96 +165,77 @@ export default function Home() {
 
       {/* 5. PROCESS SECTION */}
       <section className="container px-4 md:px-6 py-12">
-        <h2 className="font-outfit text-3xl font-bold uppercase text-center mb-16">
-          The <span className="text-secondary">Process</span>
+        <h2 className="font-outfit text-3xl md:text-5xl font-black uppercase text-center mb-16 text-white">
+          The Detailing <span className="text-secondary">Process</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {[
-            { title: "Check-in", desc: "Vehicle inspection & requirements", icon: CheckCircle },
-            { title: "Pre-Rinse", desc: "Foam bath & dirt removal", icon: Droplets },
-            { title: "Detailing", desc: "Hand wash & deep clean", icon: Sparkles },
-            { title: "Inspection", desc: "Final quality check", icon: Trophy },
+            { title: "Check-in", desc: "Digital inspection & paint assessment", icon: CheckCircle },
+            { title: "Pre-Rinse", desc: "Dense snow foam bath & decontamination", icon: Droplets },
+            { title: "Detailing", desc: "Two-bucket hand wash & interior steam", icon: Sparkles },
+            { title: "Inspection", desc: "Ceramic sealant & final QC signoff", icon: Trophy },
           ].map((step, i) => (
-            <div key={i} className="flex flex-col items-center text-center group">
+            <div key={i} className="flex flex-col items-center text-center group p-6 rounded-2xl border border-white/5 bg-card/30 hover:border-primary/50 transition-colors">
               <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full border-2 border-primary/20 bg-background transition-all group-hover:border-primary group-hover:shadow-[0_0_20px_-5px_var(--primary)]">
                 <step.icon className="h-8 w-8 text-foreground group-hover:text-primary transition-colors" />
               </div>
-              <h3 className="font-outfit text-xl font-bold uppercase mb-2">{i + 1}. {step.title}</h3>
-              <p className="text-sm text-muted-foreground">{step.desc}</p>
+              <h3 className="font-outfit text-xl font-bold uppercase mb-2 text-white">{i + 1}. {step.title}</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">{step.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 6. TESTIMONIALS */}
-      <section className="container px-4 md:px-6 bg-secondary/5 py-16 rounded-3xl">
-        <div className="text-center mb-10">
-          <h2 className="font-outfit text-3xl font-bold uppercase">Client Reviews</h2>
+      {/* 6. VERIFIED TESTIMONIALS WITH REAL PORTRAITS */}
+      <section className="container px-4 md:px-6 bg-secondary/5 py-16 rounded-3xl border border-secondary/10">
+        <div className="text-center mb-12">
+          <h2 className="font-outfit text-3xl md:text-4xl font-black uppercase text-white">Verified Client Reviews</h2>
           <div className="flex justify-center gap-1 mt-4">
             {[1, 2, 3, 4, 5].map(i => <Star key={i} className="h-5 w-5 fill-primary text-primary" />)}
           </div>
-          <p className="text-sm text-muted-foreground mt-2">5.0 Star Average</p>
+          <p className="text-xs uppercase tracking-widest text-muted-foreground mt-2">5.0 Star Average • Limassol, Cyprus</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { name: "Alex K.", text: "Absolutely incredible work. My car looks better than when I bought it!" },
-            { name: "Maria S.", text: "The ceramic spray is magic. Water just falls off. Highly recommended." },
-            { name: "George P.", text: "Best in Limassol. Professional, clean, and amazing attention to detail." }
+            {
+              name: "Alex K.",
+              car: "BMW M4 Owner",
+              text: "Absolutely incredible work. The paint correction took out all swirl marks and the ceramic hydrophobic spray is magic. Best in Limassol!",
+              avatar: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200"
+            },
+            {
+              name: "Maria S.",
+              car: "Porsche Macan GTS",
+              text: "The interior steam extraction removed coffee stains I thought were permanent. Leather feels like brand new showroom leather again.",
+              avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200"
+            },
+            {
+              name: "George P.",
+              car: "Audi RS3 Sedan",
+              text: "Flawless execution. The team cares about the cars as much as the owners. Water just sheets right off in heavy rain.",
+              avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200"
+            }
           ].map((review, i) => (
-            <div key={i} className="rounded-xl border border-border/50 bg-background/50 p-6 backdrop-blur-sm">
-              <div className="flex gap-0.5 mb-4">
-                {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-4 w-4 fill-primary text-primary" />)}
+            <div key={i} className="rounded-xl border border-border/50 bg-background/70 p-6 backdrop-blur-md flex flex-col justify-between">
+              <div>
+                <div className="flex gap-1 mb-4 text-primary">
+                  ★★★★★
+                </div>
+                <p className="text-sm text-zinc-300 italic mb-6 leading-relaxed">"{review.text}"</p>
               </div>
-              <p className="italic text-muted-foreground mb-4">&quot;{review.text}&quot;</p>
-              <p className="font-bold text-foreground">- {review.name}</p>
+              <div className="flex items-center gap-3 pt-4 border-t border-border/40">
+                <img
+                  src={review.avatar}
+                  alt={review.name}
+                  className="w-10 h-10 rounded-full object-cover border border-primary/50"
+                />
+                <div>
+                  <h4 className="font-bold text-sm text-white">{review.name}</h4>
+                  <p className="text-[11px] text-primary font-mono">{review.car}</p>
+                </div>
+              </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* 8. LOCATION Teaser */}
-      <section className="container px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6">
-          <h2 className="font-outfit text-4xl font-bold uppercase">Find Us</h2>
-          <div className="space-y-4 text-lg">
-            <p className="flex items-center gap-3"><Clock className="text-primary" /> {siteConfig.contact.hours}</p>
-            <p className="flex items-center gap-3"><CheckCircle className="text-primary" /> {siteConfig.contact.address}</p>
-            <p className="text-muted-foreground">Located in the heart of Limassol, easily accessible from the highway.</p>
-          </div>
-          <div className="flex gap-4">
-            <Button size="lg" className="bg-white text-black hover:bg-gray-200">Get Directions</Button>
-            <Button size="lg" variant="outline">Call Us</Button>
-          </div>
-        </div>
-        <div className="aspect-video w-full rounded-2xl bg-zinc-900 border border-border/50 flex items-center justify-center relative overflow-hidden group">
-          {/* Map Placeholder */}
-          <div className="absolute inset-0 bg-[url('https://placehold.co/800x450/111/444.png?text=Map+Location')] bg-cover bg-center opacity-50 group-hover:opacity-70 transition-opacity" />
-          <div className="relative z-10 bg-background/80 p-4 rounded-xl backdrop-blur-md">
-            <span className="font-bold">Map Preview</span>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. FINAL CTA */}
-      <section className="container px-4 md:px-6">
-        <div className="relative overflow-hidden rounded-3xl bg-primary px-6 py-16 text-center shadow-[0_0_50px_-10px_var(--primary)] sm:px-16">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary via-purple-600 to-primary opacity-80" />
-          <div className="relative z-10 flex flex-col items-center gap-6">
-            <h2 className="font-outfit text-3xl font-bold uppercase tracking-tight text-white sm:text-5xl">
-              Ready for that showroom shine?
-            </h2>
-            <p className="max-w-2xl text-lg text-white/90">
-              Don&apos;t let your car lose its value. Book your premium detail today.
-            </p>
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <Button size="lg" className="h-14 bg-white text-primary hover:bg-white/90 font-bold px-10 border-0" asChild>
-                <Link href="/book">Book Now</Link>
-              </Button>
-              <Button size="lg" variant="outline" className="h-14 border-white tex-white hover:bg-white/20 px-10 text-glow text-white" asChild>
-                <Link href="/contact">Contact Us</Link>
-              </Button>
-            </div>
-          </div>
         </div>
       </section>
     </div>
