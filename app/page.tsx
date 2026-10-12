@@ -115,8 +115,8 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <div className="inline-block rounded-full bg-secondary/20 px-4 py-1.5 text-xs font-bold text-secondary uppercase tracking-widest border border-secondary/30">
-                  ★ Studio Signature Choice
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-secondary/20 px-4 py-1.5 text-xs font-bold text-secondary uppercase tracking-widest border border-secondary/30">
+                  <Star className="h-3.5 w-3.5 fill-current" /> Studio Signature Choice
                 </div>
                 <h2 className="font-outfit text-4xl font-black uppercase leading-tight md:text-6xl text-white">
                   {signaturePackage.name}
@@ -219,7 +219,9 @@ export default function Home() {
             <div key={i} className="rounded-xl border border-border/50 bg-background/70 p-6 backdrop-blur-md flex flex-col justify-between">
               <div>
                 <div className="flex gap-1 mb-4 text-primary">
-                  ★★★★★
+                  {[...Array(5)].map((_, idx) => (
+                    <Star key={idx} className="h-4 w-4 fill-current" />
+                  ))}
                 </div>
                 <p className="text-sm text-zinc-300 italic mb-6 leading-relaxed">"{review.text}"</p>
               </div>
